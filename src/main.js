@@ -5,4 +5,5 @@ import router from "./router";
 
 createApp(App).use(router).mount("#app");
 
+import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/js/bootstrap.js";
