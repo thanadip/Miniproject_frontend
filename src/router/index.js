@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import IndexView from "../views/IndexView.vue";
 import RegisterView from "../views/RegisterView.vue";
 import HomeView from "../views/HomeView.vue";
+import UploadView from "../views/UploadView.vue";
 
 const routes = [
   {
@@ -23,6 +24,11 @@ const routes = [
     path: "/home",
     name: "home",
     component: HomeView,
+  },
+  {
+    path: "/upload",
+    name: "upload",
+    component: UploadView,
   },
 ];
 
