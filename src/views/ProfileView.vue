@@ -7,16 +7,26 @@
       class="d-flex justify-content-center align-items-center content flex-column"
     >
       <div class="post-area">
-        <div class="fs-3 mb-5 ms-3">Posting something</div>
-        <div class="fs-5 ms-2">Caption</div>
+        <div class="fs-3 mb-5 ms-3">Profile</div>
+        <div class="fs-5 ms-2">Name</div>
         <div class="input-group mb-3">
           <input
             type="text"
-            class="form-control rounded-1 bg-secondary-subtle"
-            placeholder="Enter image description"
+            class="d-flex-inline form-control rounded-1 bg-secondary-subtle"
+            placeholder="Enter name to edit"
           />
+          <button
+            class="btn btn-primary sm"
+            style="
+              --bs-btn-padding-y: 0.1rem;
+              --bs-btn-padding-x: 0.7rem;
+              --bs-btn-font-size: 0.75rem;
+            "
+          >
+            change name
+          </button>
         </div>
-        <div class="fs-5 ms-2">Image selection</div>
+        <div class="fs-5 ms-2">Change profile image</div>
         <div class="mt-2">
           <input class="form-control" type="file" id="formFile" />
         </div>
@@ -88,7 +98,7 @@ body {
 import SideBar from "@/components/SideBar.vue";
 
 export default {
-  name: "UploadView",
+  name: "ProfileView",
   components: {
     SideBar,
   },

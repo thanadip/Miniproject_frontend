@@ -12,12 +12,18 @@
           </a>
         </li>
         <li class="mb-3">
-          <a href="#" class="fs-3 link-underline link-underline-opacity-0">
+          <a
+            href="/profile"
+            class="fs-3 link-underline link-underline-opacity-0"
+          >
             <i class="bi bi-person h2 me-2"></i> Profile
           </a>
         </li>
         <li class="mb-3">
-          <a href="#" class="fs-3 link-underline link-underline-opacity-0">
+          <a
+            href="/upload"
+            class="fs-3 link-underline link-underline-opacity-0"
+          >
             <i class="bi bi-cloud-upload h2 me-2"></i> Upload
           </a>
         </li>

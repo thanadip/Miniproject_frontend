@@ -37,9 +37,7 @@
           <!-- #656ED3 -->
         </div>
         <div class="d-grid gap-4">
-          <button type="submit" class="btn btn-primary custom-button mt-4">
-            Login
-          </button>
+          <a href="/home" class="btn btn-primary custom-button mt-4"> Login </a>
         </div>
         <div class="p text-black text-center fs-6 mt-4">
           Don't have an account?<a

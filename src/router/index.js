@@ -3,6 +3,7 @@ import IndexView from "../views/IndexView.vue";
 import RegisterView from "../views/RegisterView.vue";
 import HomeView from "../views/HomeView.vue";
 import UploadView from "../views/UploadView.vue";
+import ProfileView from "../views/ProfileView.vue";
 
 const routes = [
   {
@@ -29,6 +30,11 @@ const routes = [
     path: "/upload",
     name: "upload",
     component: UploadView,
+  },
+  {
+    path: "/profile",
+    name: "profile",
+    component: ProfileView,
   },
 ];
 
