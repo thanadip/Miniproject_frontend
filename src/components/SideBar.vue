@@ -1,5 +1,5 @@
 <template>
-  <div class="p bg-picc">
+  <div class="bg-picc sticky-sidebar">
     <!-- Logo -->
     <div class="fs-1 logoo fw-bold">LOGO</div>
 
@@ -46,6 +46,8 @@ export default {};
   width: 17vw;
   color: black;
   flex-direction: column;
+  position: fixed;
+  float: left;
 }
 .log-out {
   margin-bottom: 40px;
