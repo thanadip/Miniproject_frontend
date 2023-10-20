@@ -13,46 +13,81 @@
         border-radius: 7px;
       "
     >
-      <form class="p-5">
+      <form class="p-5" @submit.prevent="login">
         <p class="text-black text-center fs-6 fw-bold">Welcome Back!</p>
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label text-black fs-6"
+          <label for="username" class="form-label text-black fs-6"
             >Username:</label
           >
           <input
             type="text"
             class="form-control custom-border"
-            id="exampleInputEmail1"
+            v-model="username"
           />
         </div>
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label text-black fs-6"
+          <label for="password" class="form-label text-black fs-6"
             >Password:</label
           >
           <input
             type="password"
             class="form-control custom-border"
-            id="exampleInputPassword1"
+            v-model="password"
           />
-          <!-- #656ED3 -->
         </div>
         <div class="d-grid gap-4">
-          <a href="/home" class="btn btn-primary custom-button mt-4"> Login </a>
+          <button type="submit" class="btn btn-primary custom-button mt-4">
+            Login
+          </button>
         </div>
         <div class="p text-black text-center fs-6 mt-4">
-          Don't have an account?<a
-            class="text-black fs-6 link-underline-light fw-bold"
-            href="/register"
-            >&nbsp;Register</a
-          >
+          Don't have an account?
+          <router-link to="/register">Register</router-link>
         </div>
       </form>
     </div>
   </div>
 </template>
+
 <script>
-export default {};
+import axios from "axios";
+
+export default {
+  data() {
+    return {
+      username: "",
+      password: "",
+    };
+  },
+  methods: {
+    login() {
+      const credentials = {
+        username: this.username,
+        password: this.password,
+      };
+
+      axios
+        .post("http://localhost:9002/api/login", credentials)
+        .then((response) => {
+          if (response.status === 200) {
+            // Successful login
+            alert("Login successful");
+            // Redirect to the home page or another route
+            this.$router.push("/home");
+          } else {
+            // Authentication failed
+            alert("Login failed. Please check your credentials.");
+          }
+        })
+        .catch((error) => {
+          console.error("Login failed:", error);
+          alert("Login failed. Please try again later.");
+        });
+    },
+  },
+};
 </script>
+
 <style>
 .bg-pic {
   background-color: #afb3ff;

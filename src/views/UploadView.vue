@@ -13,16 +13,23 @@
           <input
             type="text"
             class="form-control rounded-1 bg-secondary-subtle"
+            v-model="caption"
             placeholder="Enter image description"
           />
         </div>
         <div class="fs-5 ms-2">Image selection</div>
         <div class="mt-2">
-          <input class="form-control" type="file" id="formFile" />
+          <input
+            class="form-control"
+            type="file"
+            id="formFile"
+            @change="handleImageUpload"
+          />
         </div>
         <div class="d-flex justify-content-end me-5 mt-5">
           <button
             class="btn btn-success sm"
+            @click="uploadPost"
             style="
               --bs-btn-padding-y: 0.1rem;
               --bs-btn-padding-x: 0.7rem;
@@ -91,6 +98,20 @@ export default {
   name: "UploadView",
   components: {
     SideBar,
+  },
+  data() {
+    return {
+      caption: "",
+      image: null,
+    };
+  },
+  methods: {
+    handleImageUpload(event) {
+      this.image = event.target.files[0];
+    },
+    uploadPost() {
+      // Implement the logic to upload the post (send the image and caption to the backend).
+    },
   },
 };
 </script>

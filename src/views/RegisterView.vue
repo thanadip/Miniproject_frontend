@@ -13,23 +13,28 @@
         border-radius: 7px;
       "
     >
-      <form class="p-5">
+      <form class="p-5" @submit.prevent="registerUser">
         <p class="text-black text-center fs-6 fw-bold">Create an Account</p>
         <div class="mb-3">
           <label for="fullName" class="form-label text-black fs-6"
             >Full Name:</label
           >
-          <input type="text" class="form-control custom-border" id="fullName" />
+          <input type="text" class="form-control custom-border" />
         </div>
         <div class="mb-3">
           <label for="username" class="form-label text-black fs-6"
             >Username:</label
           >
-          <input type="text" class="form-control custom-border" id="username" />
+          <input
+            type="text"
+            class="form-control custom-border"
+            id="username"
+            v-model="user.username"
+          />
         </div>
         <div class="mb-3">
           <label for="email" class="form-label text-black fs-6">Email:</label>
-          <input type="email" class="form-control custom-border" id="email" />
+          <input type="email" class="form-control custom-border" />
         </div>
         <div class="mb-3">
           <label for="password" class="form-label text-black fs-6"
@@ -39,6 +44,7 @@
             type="password"
             class="form-control custom-border"
             id="password"
+            v-model="user.password"
           />
         </div>
         <div class="mb-3">
@@ -49,6 +55,7 @@
             type="password"
             class="form-control custom-border"
             id="confirmPassword"
+            v-model="confirmPassword"
           />
         </div>
         <div class="d-grid gap-4">
@@ -57,11 +64,7 @@
           </button>
         </div>
         <div class="p text-black text-center fs-6 mt-4">
-          Already have an account?<a
-            class="text-black fs-6 link-underline-light fw-bold"
-            href="/"
-            >&nbsp;Login</a
-          >
+          Already have an account? <router-link to="/">Login</router-link>
         </div>
       </form>
     </div>
@@ -69,8 +72,40 @@
 </template>
 
 <script>
-export default {};
+import axios from "axios";
+export default {
+  data() {
+    return {
+      user: {
+        username: "",
+        password: "",
+      },
+      confirmPassword: "",
+    };
+  },
+  methods: {
+    registerUser() {
+      if (this.user.password !== this.confirmPassword) {
+        alert("Passwords do not match");
+        return;
+      }
+      axios
+        .post("http://localhost:9002/api/create", this.user)
+        .then((response) => {
+          console.log("User registered:", response.data);
+          alert("Registration successful");
+          this.$router.push("/");
+        })
+        .catch((error) => {
+          console.error("Registration failed:", error);
+          console.log(this.user);
+          alert("Registration failed");
+        });
+    },
+  },
+};
 </script>
+
 <style>
 .bg-pic {
   background-color: #afb3ff;

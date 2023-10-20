@@ -14,6 +14,7 @@
             type="text"
             class="d-flex-inline form-control rounded-1 bg-secondary-subtle"
             placeholder="Enter name to edit"
+            v-model="name"
           />
           <button
             class="btn btn-primary sm"
@@ -22,10 +23,12 @@
               --bs-btn-padding-x: 0.7rem;
               --bs-btn-font-size: 0.75rem;
             "
+            @click="changeName"
           >
-            change name
+            Change name
           </button>
         </div>
+
         <div class="fs-5 ms-2">Change profile image</div>
         <div class="mt-2">
           <input class="form-control" type="file" id="formFile" />
@@ -69,10 +72,6 @@
   width: 23vw;
 }
 
-body {
-  /* background-color: grey; */
-}
-
 .post-image {
   max-height: 450px;
   max-width: 425px;
@@ -98,9 +97,34 @@ body {
 import SideBar from "@/components/SideBar.vue";
 
 export default {
+  data() {
+    return {
+      name: "", // Data property to store the user's name
+    };
+  },
   name: "ProfileView",
   components: {
     SideBar,
+  },
+  methods: {
+    changeName() {
+      if (this.name.trim() === "") {
+        return;
+      }
+
+      // Send a request to update the name
+      // Example using axios:
+      axios
+        .put("/api/user/updateName", { name: this.name }) // Adjust the API endpoint
+        .then((response) => {
+          // Handle the response, e.g., show a success message
+          console.log("Name updated:", response.data);
+        })
+        .catch((error) => {
+          // Handle errors, e.g., show an error message
+          console.error("Failed to update name:", error);
+        });
+    },
   },
 };
 </script>
